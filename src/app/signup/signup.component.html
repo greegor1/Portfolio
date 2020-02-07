@@ -1,0 +1,85 @@
+<h2 class="mb-4">Wellcome to My Portfolio</h2>
+<p class="content">Please create your account</p>
+<form class="form-group"
+      [formGroup]="signupForm"
+      (ngSubmit)="onSignup()">
+    <div class="row mb-3" *ngIf="(stepSubj$ | async) === 1">
+        <div class="col-12">
+            <label for="login" class="fw-500">Login</label>
+            <input type="text"
+                   class="form-control"
+                   minlength="5"
+                   formControlName="login">
+            <button type="button"
+                   class="btn btn-success w-100 fw-500 mt-3"
+                   [disabled]="!step2Enable"
+                   (click)="enableNextStep()">Next step</button>
+        </div>
+    </div>
+    <div *ngIf="(stepSubj$ | async) === 2">
+        <div class="row mb-3">
+            <div class="col-12">
+                <label for="password" class="fw-500">Password</label>
+                <input type="password"
+                       class="form-control"
+                       minlength="5"
+                       formControlName="password">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12">
+                <label for="confirmPassword" class="fw-500">Confirm Password</label>
+                <input type="password"
+                        class="form-control"
+                        minlength="5"
+                        formControlName="confirmPassword">
+            </div>
+        </div>
+        <button type="button"
+                class="btn btn-success w-100 fw-500"
+                [disabled]="!step3Enable"
+                (click)="enableNextStep()">Next step</button>
+    </div>
+    <div *ngIf="(stepSubj$ | async) === 3">
+        <div class="row mb-3">
+            <div class="col-12">
+                <label for="firstName" class="fw-500">First Name</label>
+                <input type="text"
+                        class="form-control"
+                        minlength="3"
+                        formControlName="firstName">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12">
+                <label for="lastName" class="fw-500">Last Name</label>
+                <input type="text"
+                        class="form-control"
+                        minlength="3"
+                        formControlName="lastName">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12">
+                <label for="age" class="fw-500">Age</label>
+                <input type="number"
+                        class="form-control"
+                        minlength="1"
+                        maxlength="2"
+                        formControlName="age">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button type="submit"
+                        class="btn yellow w-100 fw-500"
+                        [disabled]="!signupForm.valid">Sign up</button>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="row space mt-5">
+    <div class="current-step" [ngClass]="{'opacity-false': (stepSubj$ | async) === 1 || (stepSubj$ | async) === 2 || (stepSubj$ | async) === 3}"></div>
+    <div class="current-step"[ngClass]="{'opacity-false': (stepSubj$ | async) === 2 || (stepSubj$ | async) === 3}"></div>
+    <div class="current-step" [ngClass]="{'opacity-false': (stepSubj$ | async) === 3}"></div>
+</div>

@@ -1,0 +1,36 @@
+<h2 class="mb-4">Wellcome to My Portfolio</h2>
+<p class="content">Please sign in to see full content</p>
+<form class="form-group"
+      [formGroup]="loginForm"
+      (ngSubmit)="onLogin()">
+    <div class="row mb-2">
+        <div class="col-12">
+            <label for="login" class="fw-500">Login</label>
+            <input type="text"
+                   class="form-control"
+                   minlength="5"
+                   formControlName="login">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12">
+            <label for="password" class="fw-500">Password</label>
+            <input type="password"
+                   class="form-control"
+                   minlength="5"
+                   formControlName="password">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <button type="submit"
+                    class="btn btn-success w-100 fw-500 mb-2"
+                    [disabled]="!loginForm.valid">Login</button>
+        </div>
+        <div class="col-12">
+            <button type="button"
+                    class="btn yellow w-100 fw-500"
+                    (click)="onSignup()">Sign up</button>
+        </div>
+    </div>
+</form>

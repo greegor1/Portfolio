@@ -1,0 +1,25 @@
+<div class="header">
+        <h3 class="header__logo"><a routerLink="/">My Portfolio</a></h3>
+        <ul class="header__list">
+            <li class="header__list-item">
+                <a class="header__list-link" routerLink="/about">About</a>
+            </li>
+            <li class="header__list-item">
+                <a class="header__list-link" routerLink="/games">Games</a>
+            </li>
+            <li class="header__list-item">
+                <a class="header__list-link" routerLink="/aplications">Apps</a>
+            </li>
+            <li class="header__list-item">
+                <a class="header__list-link" routerLink="/skills">Skills</a>
+            </li>
+            <li class="header__list-item" *ngIf="loggedIn">
+                <a class="header__list-link" routerLink="/login">Login</a>
+            </li>
+            <li class="header__list-item" *ngIf="!loggedIn">
+                <a class="header__list-link" routerLink="/signup">Sign in</a>
+            </li>
+        </ul>
+</div>
+<div class="header--spacing"></div>
+
